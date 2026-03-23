@@ -67,6 +67,9 @@ dependencies {
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
 
+    // DataStore (for settings)
+    implementation(libs.androidx.datastore.preferences)
+
     // Debug
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
