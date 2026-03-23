@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import site.jagged.planneriti.domain.model.Assignment
+import site.jagged.planneriti.ui.assignments.clickableNoRipple
 import site.jagged.planneriti.ui.assignments.color
 import site.jagged.planneriti.ui.assignments.dueDateFormatted
 import site.jagged.planneriti.ui.assignments.remainingText
@@ -93,7 +94,8 @@ fun AssignmentItem(
 fun AssignmentItemClean(
     assignment: Assignment,
     onToggle: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
 ) {
     val typeColor = Color(assignment.assignmentType.color())
     val isOverdue = !assignment.isCompleted && System.currentTimeMillis() > assignment.dueDate
@@ -111,6 +113,7 @@ fun AssignmentItemClean(
                 RoundedCornerShape(topStart = 12.dp, bottomStart = 12.dp)
             )
             .background(Color(0xFF1C1C1E), RoundedCornerShape(12.dp))
+            .clickableNoRipple(onClick = onClick)
             .padding(12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
