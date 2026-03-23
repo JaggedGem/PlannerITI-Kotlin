@@ -76,6 +76,9 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
 
+    // SecureStorage
+    implementation(libs.androidx.security.crypto)
+
     // Debug
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

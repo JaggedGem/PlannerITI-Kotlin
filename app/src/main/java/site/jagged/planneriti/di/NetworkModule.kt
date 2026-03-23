@@ -11,6 +11,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import site.jagged.planneriti.data.remote.api.AuthApi
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -63,5 +64,27 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(PapiApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAuthApi(okHttpClient: OkHttpClient): AuthApi {
+        // needs auth header injected — we'll add an interceptor
+        val authOkHttpClient = okHttpClient.newBuilder()
+            .addInterceptor { chain ->
+                val token = "" // we'll fix this with proper auth state
+                val request = chain.request().newBuilder()
+                    .apply { if (token.isNotEmpty()) addHeader("Authorization", "Bearer $token") }
+                    .build()
+                chain.proceed(request)
+            }
+            .build()
+
+        return Retrofit.Builder()
+            .baseUrl("https://papi.jagged.site/")
+            .client(authOkHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(AuthApi::class.java)
     }
 }
