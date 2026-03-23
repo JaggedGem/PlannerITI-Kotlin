@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PlannerITI</string>
+    <string name="tab_schedule">Расписание</string>
+    <string name="tab_grades">Оценки</string>
+    <string name="tab_assignments">Задания</string>
+    <string name="tab_settings">Настройки</string>
+</resources>
