@@ -70,6 +70,12 @@ dependencies {
     // DataStore (for settings)
     implementation(libs.androidx.datastore.preferences)
 
+    // API requests
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
     // Debug
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
