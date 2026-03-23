@@ -10,11 +10,13 @@ import androidx.compose.ui.graphics.Color
 import site.jagged.planneriti.ui.theme.Background
 
 @Composable
-fun AssignmentsScreen() {
+fun AssignmentsScreen(
+    onNavigateToNew: () -> Unit = {},
+    onNavigateToEdit: (String) -> Unit = {},
+    onNavigateToArchive: () -> Unit = {}
+) {
     Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Background),
+        modifier = Modifier.fillMaxSize().background(Background),
         contentAlignment = Alignment.Center
     ) {
         Text("Assignments", color = Color.White)
