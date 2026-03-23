@@ -9,6 +9,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import site.jagged.planneriti.data.local.AppDatabase
 import site.jagged.planneriti.data.local.dao.AssignmentDao
+import site.jagged.planneriti.data.repository.AssignmentRepository
 import javax.inject.Singleton
 
 @Module
@@ -28,5 +29,11 @@ object DatabaseModule {
     @Provides
     fun provideAssignmentDao(database: AppDatabase): AssignmentDao {
         return database.assignmentDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAssignmentRepository(dao: AssignmentDao): AssignmentRepository {
+        return AssignmentRepository(dao)
     }
 }
