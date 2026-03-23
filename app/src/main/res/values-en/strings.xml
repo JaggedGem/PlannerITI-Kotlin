@@ -5,4 +5,11 @@
     <string name="tab_grades">Grades</string>
     <string name="tab_assignments">Assignments</string>
     <string name="tab_settings">Settings</string>
+    <string name="assignments_title">Assignments</string>
+    <string name="assignments_loading">Loading assignments…</string>
+    <string name="assignments_empty">No assignments</string>
+    <string name="tab_due_date">Due Date</string>
+    <string name="tab_classes">Classes</string>
+    <string name="tab_priority">Priority</string>
+    <string name="assignments_add">New Assignment</string>
 </resources>

@@ -5,4 +5,11 @@
     <string name="tab_grades">Note</string>
     <string name="tab_assignments">Teme</string>
     <string name="tab_settings">Setări</string>
+    <string name="assignments_title">Teme</string>
+    <string name="assignments_loading">Se încarcă temele…</string>
+    <string name="assignments_empty">Nu există teme</string>
+    <string name="tab_due_date">Data limită</string>
+    <string name="tab_classes">Clase</string>
+    <string name="tab_priority">Prioritate</string>
+    <string name="assignments_add">Temă nouă</string>
 </resources>

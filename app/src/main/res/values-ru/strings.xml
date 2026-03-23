@@ -5,4 +5,11 @@
     <string name="tab_grades">Оценки</string>
     <string name="tab_assignments">Задания</string>
     <string name="tab_settings">Настройки</string>
+    <string name="assignments_title">Задания</string>
+    <string name="assignments_loading">Загрузка заданий…</string>
+    <string name="assignments_empty">Нет заданий</string>
+    <string name="tab_due_date">Срок сдачи</string>
+    <string name="tab_classes">Классы</string>
+    <string name="tab_priority">Приоритет</string>
+    <string name="assignments_add">Новое задание</string>
 </resources>
