@@ -15,6 +15,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import dagger.hilt.android.AndroidEntryPoint
 import site.jagged.planneriti.ui.assignments.AssignmentsScreen
 import site.jagged.planneriti.ui.grades.GradesScreen
 import site.jagged.planneriti.ui.schedule.ScheduleScreen
@@ -23,6 +24,7 @@ import site.jagged.planneriti.ui.theme.PlannerITITheme
 import site.jagged.planneriti.ui.theme.Primary
 import site.jagged.planneriti.ui.theme.Surface
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
