@@ -56,6 +56,17 @@ dependencies {
     ksp(libs.hiltAndroidCompiler)
     implementation(libs.androidxHiltNavigationCompose)
 
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.android)
+
     // Debug
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
