@@ -12,6 +12,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import site.jagged.planneriti.data.remote.api.AuthApi
+import site.jagged.planneriti.data.local.SecureStorage
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -68,11 +69,13 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideAuthApi(okHttpClient: OkHttpClient): AuthApi {
-        // needs auth header injected — we'll add an interceptor
+    fun provideAuthApi(
+        okHttpClient: OkHttpClient,
+        secureStorage: SecureStorage
+    ): AuthApi {
         val authOkHttpClient = okHttpClient.newBuilder()
             .addInterceptor { chain ->
-                val token = "" // we'll fix this with proper auth state
+                val token = secureStorage.getAuthToken().orEmpty()
                 val request = chain.request().newBuilder()
                     .apply { if (token.isNotEmpty()) addHeader("Authorization", "Bearer $token") }
                     .build()

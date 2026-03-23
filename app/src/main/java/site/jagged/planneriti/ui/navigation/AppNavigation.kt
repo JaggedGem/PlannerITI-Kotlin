@@ -32,7 +32,9 @@ fun AppNavigation(
                 onNavigateToArchive  = { navController.navigate(Screen.Archive.route) }
             )
         }
-        composable(Screen.Settings.route) { SettingsScreen() }
+        composable(Screen.Settings.route) {
+            SettingsScreen(onOpenGrades = { navController.navigate(Screen.Grades.route) })
+        }
         composable(Screen.NewAssignment.route) {
             NewAssignmentScreen(
                 onNavigateBack = { navController.popBackStack() }

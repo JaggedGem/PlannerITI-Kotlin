@@ -2,6 +2,7 @@ package site.jagged.planneriti.data.repository
 
 import site.jagged.planneriti.data.local.SecureStorage
 import site.jagged.planneriti.data.remote.api.AuthApi
+import site.jagged.planneriti.data.remote.api.DeleteAccountRequest
 import site.jagged.planneriti.data.remote.api.ForgotPasswordRequest
 import site.jagged.planneriti.data.remote.api.LoginRequest
 import site.jagged.planneriti.data.remote.api.SignupRequest
@@ -49,9 +50,32 @@ class AuthRepository @Inject constructor(
         }
     }
 
+    suspend fun refreshCurrentUser(): Result<User> {
+        return try {
+            if (!isLoggedIn()) {
+                Result.failure(IllegalStateException("User is not logged in"))
+            } else {
+                val user = api.getMe()
+                Result.success(User(user.email, user.isVerified))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
     suspend fun forgotPassword(email: String): Result<Unit> {
         return try {
             api.forgotPassword(ForgotPasswordRequest(email))
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun deleteAccount(password: String): Result<Unit> {
+        return try {
+            api.deleteAccount(DeleteAccountRequest(password))
+            logout()
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)
