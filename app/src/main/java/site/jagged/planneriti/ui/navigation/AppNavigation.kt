@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import site.jagged.planneriti.ui.assignments.AssignmentsScreen
+import site.jagged.planneriti.ui.assignments.newassignment.NewAssignmentScreen
 import site.jagged.planneriti.ui.grades.GradesScreen
 import site.jagged.planneriti.ui.schedule.ScheduleScreen
 import site.jagged.planneriti.ui.settings.SettingsScreen
@@ -33,8 +34,9 @@ fun AppNavigation(
         }
         composable(Screen.Settings.route) { SettingsScreen() }
         composable(Screen.NewAssignment.route) {
-            // placeholder for now
-            androidx.compose.foundation.layout.Box {}
+            NewAssignmentScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
         }
         composable(Screen.Archive.route) {
             // placeholder for now
@@ -46,7 +48,7 @@ fun AppNavigation(
                 type = NavType.StringType
             })
         ) { backStackEntry ->
-            val id = backStackEntry.arguments?.getString(Screen.EditAssignment.ARG_ID) ?: return@composable
+            backStackEntry.arguments?.getString(Screen.EditAssignment.ARG_ID) ?: return@composable
             // placeholder for now
             androidx.compose.foundation.layout.Box {}
         }
